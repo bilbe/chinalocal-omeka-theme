@@ -1,0 +1,91 @@
+header {
+	width: 768px;
+}
+#content {
+	width: 768px;
+}
+#primary-nav {
+	width: 768px;
+}
+/* @group Header */
+#header-image {
+	width: 768px;
+}
+#site-title {
+	width: 50%;
+}
+#search-container {
+	width: 35%;
+	margin: 0;
+}
+/* @end */
+#home #primary {}
+.record {
+	width: 232.666666667px;
+}
+#home #secondary {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-right: 0;
+	width: 460px;
+}
+#home #secondary {
+	width: 364px;
+}
+.items #content {
+    width: 768px;
+}
+.browse .item {
+	padding: 1.5em 0;
+}
+footer {
+	width: 768px;
+}
+#exhibit-pages {
+	width: 172px;
+	margin-right: 20px;
+}
+.exhibits #content > h1:first-of-type,
+#exhibit-blocks,
+#exhibit-page-navigation,
+.exhibits.summary #primary {
+	width: 556px;
+}
+
+.exhibit .description,
+.exhibit .description ~ * {
+	width: 412px;
+}
+
+/* columns for tablet-ish widths */
+.tfull {
+	width: 100% !important;
+}
+.t1of2 {
+	width: 50% !important;
+	float: left;
+}
+.t1of3 {
+	width: 33% !important;
+	float: left;
+}
+.t2of3 {
+	width: 67% !important;
+	float: left;
+}
+.t1of5 {
+	width: 20% !important;
+	float: left;
+}
+.t2of5 {
+	width: 40% !important;
+	float: left;
+}
+.t3of5 {
+	width: 60% !important;
+	float: left;
+}
+.t4of5 {
+	width: 80% !important;
+	float: left;
+}
