@@ -1,21 +1,36 @@
-    </div>
+</div><!-- end content -->
 
-    <footer role="contentinfo">
+<footer role="contentinfo">
 
-        <nav role="navigation">
-            <?php echo public_nav_main(); ?>
-        </nav>
-
-        <div id="footer-text">
-            <?php echo get_theme_option('Footer Text'); ?>
-            <?php if ((get_theme_option('Display Footer Copyright') == 1) && $copyright = option('copyright')): ?>
-                <p><?php echo $copyright; ?></p>
-            <?php endif; ?>
-            <p><?php echo __('Proudly powered by <a href="http://omeka.org">Omeka</a>.'); ?></p>
+    <div id="footer-content" class="center-div">
+        <?php if($footerText = get_theme_option('Footer Text')): ?>
+        <div id="custom-footer-text">
+            <p><?php echo get_theme_option('Footer Text'); ?></p>
         </div>
+        <?php endif; ?>
+        <?php if ((get_theme_option('Display Footer Copyright') == 1) && $copyright = option('copyright')): ?>
+        <p><?php echo $copyright; ?></p>
+        <?php endif; ?>
+        <nav><?php echo public_nav_main()->setMaxDepth(0); ?></nav>
+        <p><?php echo __('Proudly powered by <a href="http://omeka.org">Omeka</a>.'); ?></p>
 
-        <?php fire_plugin_hook('public_theme_footer'); ?>
+    </div><!-- end footer-content -->
 
-    </footer><!-- end footer -->
+     <?php fire_plugin_hook('public_footer', array('view'=>$this)); ?>
+
+</footer>
+
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        Omeka.showAdvancedForm();
+        Omeka.skipNav();
+        Omeka.megaMenu();
+        Berlin.dropDown();
+    });
+</script>
+
+<?php echo js_tag("fancybox-display"); ?>
+
 </body>
+
 </html>

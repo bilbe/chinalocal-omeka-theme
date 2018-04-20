@@ -1,16 +1,29 @@
 <?php
 
-$title = __('Neatline | Browse Exhibits');
+/**
+ * @package     omeka
+ * @subpackage  neatline
+ * @copyright   2014 Rector and Board of Visitors, University of Virginia
+ * @license     http://www.apache.org/licenses/LICENSE-2.0.html
+ */
 
+?>
+
+<?php
+if ($pageTitle = get_theme_option("Browse Neatline Title")) {
+ #$pageTitle is set
+} else {
+ $pageTitle = "Neatline | Browse Exhibits";
+}
 echo head(array(
-  'title' => $title,
+  'title' => __($pageTitle),
   'content_class' => 'neatline'
 )); ?>
 
 <div id="primary">
 
   <?php echo flash(); ?>
-  <h1><?php echo $title; ?></h1>
+  <h1><?php echo __($pageTitle); ?></h1>
 
   <?php if (nl_exhibitsHaveBeenCreated()): ?>
 
@@ -23,9 +36,18 @@ echo head(array(
             array('class' => 'neatline'), true
           );?>
         </h2>
-        <?php if ($description = snippet_by_word_count(nl_getExhibitField('narrative'), 20)) : ?>
-        <div class="neatline-exhibit-description"><?php echo $description . nl_getExhibitLink($e, 'show', 'Read more.', array('class' => 'neatline'), true); ?></div>
-        <?php endif; ?>
+        <?php
+        if ($browseNeatlineNarrative = get_theme_option("Browse Neatline Narrative")) {
+           echo(nl_getExhibitField('narrative'));
+         } ?>
+         <?php if ($neatlineExhibitAttribution = get_theme_option('Neatline Attribution')): ?>
+           <div id="neatline-attribution">
+             <?php $neatline_exhibit = nl_getExhibit(); ?>
+             <?php $owner_name = dh_get_user_by_id($neatline_exhibit->owner_id)['name']; ?>
+             <?php $attribution_label = get_theme_option('Neatline Attribution Label'); ?>
+             <?php echo "$attribution_label $owner_name"; ?>
+           </div>
+         <?php endif; ?>
       <?php endforeach; ?>
 
     <div class="pagination"><?php echo pagination_links(); ?></div>
